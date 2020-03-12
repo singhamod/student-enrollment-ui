@@ -1,8 +1,8 @@
 <div class="container" style="margin-top: 70px; margin-bottom: 20px;">
   <div class="row">
     <p-table #dt [value]="subjects" [rows]="5" [paginator]="true" [rowsPerPageOptions]="[5,10,20,50]"
-      selectionMode="single" (onRowSelect)="onRowSelect($event)" stateStorage="local"
-      stateKey="statedemo-local" [globalFilterFields]="['subject_code', 'subject_desc']">
+      selectionMode="single" (onRowSelect)="onRowSelect($event)" stateStorage="local" stateKey="statedemo-local"
+      [globalFilterFields]="['subject_code', 'subject_desc']">
       <ng-template pTemplate="caption">
         <div class="text-center">
           Subjects <span class="badge badge-dark">{{subjects?.length}}</span>

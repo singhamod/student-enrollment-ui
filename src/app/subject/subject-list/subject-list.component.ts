@@ -1,6 +1,6 @@
-import { Subject } from './../models/subject.model';
+import { Subject } from '../shared/models/subject.model';
 import { Component, OnInit, PipeTransform } from '@angular/core';
-import { SubjectService } from '../subject.service';
+import { SubjectService } from '../shared/service/subject.service';
 import { FormControl } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
 import { map, startWith } from 'rxjs/operators';

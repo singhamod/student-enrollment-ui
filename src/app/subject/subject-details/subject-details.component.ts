@@ -1,7 +1,7 @@
-import { Subject } from './../models/subject.model';
+import { Subject } from '../shared/models/subject.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SubjectService } from '../subject.service';
+import { SubjectService } from '../shared/service/subject.service';
 
 @Component({
   selector: 'app-subject-details',
@@ -18,20 +18,20 @@ export class SubjectDetailsComponent implements OnInit {
   getSubject(code: string) {
     return this.subjectService
       .getSubject(code)
-      .subscribe(resp =>  {
+      .subscribe(resp => {
         this.subject = resp;
         console.log(resp);
       });
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe( paramMap => {
-      this.getSubject(paramMap.get('id'))
+    this.route.paramMap.subscribe(paramMap => {
+      this.getSubject(paramMap.get('id'));
     });
   }
 
   onBackButtonClick(): void {
-    this.router.navigate(['/subject']);
+    this.router.navigate(['/subject/list']);
   }
 
 }

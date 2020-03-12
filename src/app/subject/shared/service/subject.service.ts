@@ -1,15 +1,17 @@
+import { environment } from './../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
-import { Subject } from './models/subject.model';
+import { retry, catchError, tap } from 'rxjs/operators';
+import { Subject } from '../models/subject.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubjectService {
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = environment.apiUrl;
   private url = this.baseUrl + '/subject';
+  isValid: boolean;
 
   constructor(private http: HttpClient) {
   }
@@ -19,7 +21,7 @@ export class SubjectService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
-  }
+  };
 
   getSubjects(): Observable<Subject[]> {
     return this.http.get<Subject[]>(this.url).pipe(
